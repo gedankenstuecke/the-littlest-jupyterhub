@@ -57,7 +57,7 @@ def download_miniconda_installer(version, md5sum):
     block to run.
     """
     with tempfile.NamedTemporaryFile() as f:
-        installer_url = "https://github.com/jjhelmus/berryconda/releases/download/v{}/Berryconda3-{}}-Linux-armv6l.sh".format(version, version)
+        installer_url = "https://github.com/jjhelmus/berryconda/releases/download/v{}/Berryconda3-{}-Linux-armv6l.sh".format(version, version)
         # installer_url = "https://repo.continuum.io/miniconda/Miniconda3-{}-Linux-x86_64.sh".format(version)
         urllib.request.urlretrieve(installer_url, f.name)
 
