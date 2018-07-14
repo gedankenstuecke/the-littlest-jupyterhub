@@ -57,7 +57,8 @@ def download_miniconda_installer(version, md5sum):
     block to run.
     """
     with tempfile.NamedTemporaryFile() as f:
-        installer_url = "https://repo.continuum.io/miniconda/Miniconda3-{}-Linux-x86_64.sh".format(version)
+        installer_url = "https://github.com/jjhelmus/berryconda/releases/download/v{}/Berryconda3-{}}-Linux-armv6l.sh".format(version)
+        # installer_url = "https://repo.continuum.io/miniconda/Miniconda3-{}-Linux-x86_64.sh".format(version)
         urllib.request.urlretrieve(installer_url, f.name)
 
         if md5_file(f.name) != md5sum:
@@ -100,8 +101,8 @@ def pip_install(prefix, packages, editable=False):
 def main():
     install_prefix = os.environ.get('TLJH_INSTALL_PREFIX', '/opt/tljh')
     hub_prefix = os.path.join(install_prefix, 'hub')
-    miniconda_version = '4.5.4'
-    miniconda_installer_md5 = "a946ea1d0c4a642ddf0c3a26a18bb16d"
+    miniconda_version = '2.0.0'
+    miniconda_installer_md5 = "7219c31fa9cc580ec7715242e84e3c21"
 
     print('Checking if TLJH is already installed...')
     if not check_miniconda_version(hub_prefix, miniconda_version):
@@ -122,7 +123,7 @@ def main():
     is_dev = os.environ.get('TLJH_BOOTSTRAP_DEV', 'no') == 'yes'
     tljh_repo_path = os.environ.get(
         'TLJH_BOOTSTRAP_PIP_SPEC',
-        'git+https://github.com/yuvipanda/the-littlest-jupyterhub.git'
+        'git+https://github.com/gedankenstuecke/the-littlest-jupyterhub.git@berryconda'
     )
 
     pip_install(hub_prefix, [tljh_repo_path], editable=is_dev)

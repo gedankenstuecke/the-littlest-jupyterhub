@@ -66,7 +66,7 @@ def ensure_jupyterhub_package(prefix):
     with constructor
     """
     # FIXME: Use fully deterministic package lists here
-    conda.ensure_conda_packages(prefix, ['jupyterhub==0.9.0'])
+    # conda.ensure_conda_packages(prefix, ['jupyterhub==0.9.0'])
     conda.ensure_pip_packages(prefix, [
         'jupyterhub-dummyauthenticator==0.3.1',
         'jupyterhub-systemdspawner==0.11',
@@ -97,10 +97,10 @@ def ensure_user_environment():
     """
     print("Setting up user environment...")
     conda.ensure_conda_env(USER_ENV_PREFIX)
-    conda.ensure_conda_packages(USER_ENV_PREFIX, [
+    #conda.ensure_conda_packages(USER_ENV_PREFIX, [
         # Conda's latest version is on conda much more so than on PyPI.
-        'conda==4.5.8'
-    ])
+    #    'conda==4.5.8'
+    #])
 
     conda.ensure_pip_packages(USER_ENV_PREFIX, [
         # JupyterHub + notebook package are base requirements for user environment
