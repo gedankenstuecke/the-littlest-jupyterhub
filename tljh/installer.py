@@ -68,6 +68,7 @@ def ensure_jupyterhub_package(prefix):
     # FIXME: Use fully deterministic package lists here
     # conda.ensure_conda_packages(prefix, ['jupyterhub==0.9.0'])
     conda.ensure_pip_packages(prefix, [
+        'jupyterhub==0.9.0',
         'jupyterhub-dummyauthenticator==0.3.1',
         'jupyterhub-systemdspawner==0.11',
         'jupyterhub-firstuseauthenticator==0.10'
